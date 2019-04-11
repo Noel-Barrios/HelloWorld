@@ -53,7 +53,12 @@ inot plain JavaScript, so that the browser can understand it.  -->
                 // We can access props like this.
                 // The reason we're writing {this.props.message} with curly braces is because we need to tell the JSX
                 // that we want to add a JavaScript expression.  This is called "escaping"
-                return <h1>Hello World! {this.state.message} </h1>;
+                return (
+                    <div>
+                        <h1>Hello World! {this.state.message} </h1>
+                        <button onClick={this.updateMessage}>Click me!</button>
+                    </div>
+                )
             }
 
         }
