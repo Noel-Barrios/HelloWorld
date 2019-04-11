@@ -1,0 +1,36 @@
+<!-- The <div> with the id of #root is the entry point for our app.  This is where our entire app will live.
+The <script type = "text/babel" tag is where we;ll write our React.js code -->
+<!-- in this HTML file we are imported React and the ReactDOM libraries using script tags.
+We've also imported Babel, as React uses something called JSX to write markup.  We'll need to transform this JSX
+inot plain JavaScript, so that the browser can understand it.  -->
+<html>
+    <head>
+        <script src="https://unpkg.com/react@15/dist/react.min.js"> </script>
+        <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
+        <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+    </head>
+    <body>
+        <div id="root"></div>
+        <script type="text/babel">
+        
+        // ADD REACT CODE HERE
+
+        // everything in React is a component, and these usually take the form of JavaScript classes.
+        // You can create a component by extending upon the React-Component class.
+        class Hello extends React.Component {
+
+            // inside render() you'll return a description of what you want React to draw on the page. 
+            render() {
+                return <h1>Hello World!</h1>;
+            }
+
+        }
+
+        ReactDOM.render(
+            <Hello />,
+            document.getElementById("root")
+        );
+        
+        </script>
+    </body>
+</html>
