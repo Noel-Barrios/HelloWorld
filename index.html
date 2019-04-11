@@ -15,25 +15,49 @@ inot plain JavaScript, so that the browser can understand it.  -->
         
         // ADD REACT CODE HERE
 
+        // Handling data:  there are two types of data in React: props and state.  
+        // The Key difference is that state is private and can be changed from within the component itself.
+        // Props are external, and not controlled by the component itself.  It's passed down from components'
+        // higher up the hierarchy, who also control the data. 
+
+        // STATE.  
+        // Unlike props - which can't be changed directly by the component - the state can. 
+        // So if you want the data in your app to change - for example based on user interactions -
+        // it must be stored in the component's state somewhere in the app. 
+
+        // CHANGING THE STATE
+        // To modify the state, simply call this.setState(), passing in the new state object as the argument.
+
         // everything in React is a component, and these usually take the form of JavaScript classes.
         // You can create a component by extending upon the React-Component class.
         class Hello extends React.Component {
+            constructor(){
+                // before we set the state, we have to call super() in the constructor.  This is because
+                // this is uninitialized before super() has been called.
+                super();
+                this.state = {
+                    message: "my friend (from state)!"
+                };
+                this.updateMessage = this.updateMessage.bind(this);
+            }
+
+            updateMessage() {
+                this.setState({
+                    message: 'my friend (from changed state)!'
+                });
+            }
+
 
             // inside render() you'll return a description of what you want React to draw on the page. 
             render() {
                 // We can access props like this.
                 // The reason we're writing {this.props.message} with curly braces is because we need to tell the JSX
                 // that we want to add a JavaScript expression.  This is called "escaping"
-                return <h1>Hello World! {this.props.message} </h1>;
+                return <h1>Hello World! {this.state.message} </h1>;
             }
 
         }
 
-
-        // Handling data:  there are two types of data in React: props and state.  
-        // The Key difference is that state is private and can be changed from within the component itself.
-        // Props are external, and not controlled by the component itself.  It's passed down from components'
-        // higher up the hierarchy, who also control the data. 
 
         // this is where we connect our Hello component with the entry point for the app
         ReactDOM.render(
