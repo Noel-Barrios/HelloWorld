@@ -21,13 +21,25 @@ inot plain JavaScript, so that the browser can understand it.  -->
 
             // inside render() you'll return a description of what you want React to draw on the page. 
             render() {
-                return <h1>Hello World!</h1>;
+                // We can access props like this.
+                // The reason we're writing {this.props.message} with curly braces is because we need to tell the JSX
+                // that we want to add a JavaScript expression.  This is called "escaping"
+                return <h1>Hello World! {this.props.message} </h1>;
             }
 
         }
 
+
+        // Handling data:  there are two types of data in React: props and state.  
+        // The Key difference is that state is private and can be changed from within the component itself.
+        // Props are external, and not controlled by the component itself.  It's passed down from components'
+        // higher up the hierarchy, who also control the data. 
+
+        // this is where we connect our Hello component with the entry point for the app
         ReactDOM.render(
-            <Hello />,
+            //this is how you pass props to a component.  The prop is called message and has the value "my friend".
+            // We can access this prop inside the Hello component by referencing this.props.message
+            <Hello message="my friend" />,
             document.getElementById("root")
         );
         
